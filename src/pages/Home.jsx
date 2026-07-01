@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 const Home = () => {
     return (
         <div className='pt-16'>
-            <Navbar />
+
             <Hero />
             <Category />
             <FeaturedProducts />

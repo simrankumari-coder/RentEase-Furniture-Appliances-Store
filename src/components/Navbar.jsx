@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const Navbar = () => {
+import Cart from '../pages/Cart'
+const Navbar = ({ cart = [] }) => {
+    console.log("Navbar cart:", cart)
     return (
         <div>
             <nav className='fixed left-0 w-full top-0 z-50 bg-white border-b border-slate-200 shadow-sm px-5 py-3  sm:px-6 md:px-8 '>
@@ -12,7 +14,7 @@ const Navbar = () => {
                         <Link className='text-slate-700 hover:text-purple-800' to="/rentals">My Rentals</Link>
                     </div>
                     <div className='flex items-center gap-4 md:justify-end'>
-                        <Link className='text-slate-700 hover:text-purple-800' to="/cart">🛒 Cart</Link>
+                        <Link className='text-slate-700 hover:text-purple-800' to="/cart">🛒 Cart {cart?.length}</Link>
                         <button className='bg-purple-800 text-white px-4 py-2 rounded-md
 hover:bg-purple-900'>Login</button>
                     </div>
