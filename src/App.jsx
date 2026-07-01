@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import Home from "./pages/Home.jsx"
 import Products from "./pages/Products.jsx"
 import Cart from "./pages/Cart.jsx"
-import MyRentals from './MyRentals.jsx'
+import MyRentals from './pages/MyRentals.jsx'
 import Navbar from './components/Navbar.jsx'
 function App() {
   const [cart, setCart] = useState(() => {
