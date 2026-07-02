@@ -26,7 +26,7 @@ const Products = ({ cart, setCart }) => {
         <div className='px-6 md:px-10 py-8 bg-slate-50 pt-24'>
 
             <div className='mb-8'>
-                <h1 className='text-3xl font-bold text-slate-900'>All Products</h1>
+                <h1 className='md:mt-0 mt-20 text-3xl font-bold text-slate-900'>All Products</h1>
                 <p className='text-slate-600 mt-2'>Browse furniture and appliances avilable for rent</p>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
