@@ -4,14 +4,14 @@ import Hero from '../components/Hero'
 import Category from '../components/Category'
 import FeaturedProducts from '../components/FeaturedProducts'
 import Footer from '../components/Footer'
-const Home = () => {
+const Home = ({ cart, setCart, addCart }) => {
     return (
         <div className='pt-16'>
 
             <Hero />
             <Category />
-            <FeaturedProducts />
-            <Footer />
+            <FeaturedProducts cart={cart} setCart={setCart} addCart={addCart} />
+
 
         </div>
     )

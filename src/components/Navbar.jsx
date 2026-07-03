@@ -15,8 +15,8 @@ const Navbar = ({ cart = [] }) => {
                     </div>
                     <div className='flex items-center gap-4 md:justify-end'>
                         <Link className='text-slate-700 hover:text-purple-800' to="/cart">🛒 Cart {cart?.length}</Link>
-                        <button className='bg-purple-800 text-white px-4 py-2 rounded-md
-hover:bg-purple-900'>Login</button>
+                        <Link to='/login' > <button className='bg-purple-800 text-white px-4 py-2 rounded-md
+hover:bg-purple-900'>Login</button></Link>
                     </div>
                 </div>
             </nav>

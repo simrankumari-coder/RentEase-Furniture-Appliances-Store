@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import heroSec from "../images/heroSec.jpg";
 const Hero = () => {
     return (
@@ -8,7 +9,11 @@ const Hero = () => {
                 <div className='max-w-xl'>
                     <h1 className='md:mt-0 mt-20 text-5xl font-bold leading-tight'>Rent Furniture & Appliances Easily</h1>
                     <p className='mt-4 text-slate-600 text-lg'> Affordable monthly rental plans for modern living. No heavy buying cost, just rent and relax.</p>
-                    <button className='mt-6 bg-purple-800 text-white px-6 py-3 rounded-md hover:bg-purple-900'> Explore Rentals</button>
+
+                    <Link to="/products">
+                        <button
+                            className='mt-6 bg-purple-800 text-white px-6 py-3 rounded-md hover:bg-purple-900'> Explore Rentals</button>
+                    </Link>
                 </div>
                 <div className='lg:w-1/2 flex justify-center md:justify-end'>
                     <img src={heroSec} alt="furniture image" className='w-full h-auto

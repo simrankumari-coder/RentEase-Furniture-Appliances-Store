@@ -2,7 +2,7 @@ import React from 'react'
 
 const RentalItem = ({ item }) => {
     return (
-        <div className='flex max-w-xl items-center gap-4 p-4 border rounded-lg bg-white shadow-sm w-full'>
+        <div className='flex flex-col max-w-2xl sm:flex-row items-center gap-5 p-5 bg-white border rounded-xl shadow-sm hover:shadow-md transition'>
 
             <img
                 src={item.image}
@@ -11,20 +11,26 @@ const RentalItem = ({ item }) => {
             />
 
             {/* RIGHT: TEXT + BUTTON */}
-            <div className='flex flex-col flex-1 '>
+            <div className='flex-1 text-center sm:text-left '>
 
-                <h3 className='font-semibold text-sm md:text-2xl text-slate-900'>
+                <h3 className='font-bold text-xl md:text-2xl text-slate-900'>
                     {item.name}
                 </h3>
 
-                <p className='text-purple-800 md:text-2xl text-sm'>
+                <p className='text-lg font-semibold text-purple-700 mt-1'>
                     ₹{item.price} /month
                 </p>
-                <p className='text-purple-800 md:text-2xl text-sm'>{item.status}</p>
-                <p className='text-purple-800 md:text-2xl text-sm'>{item.startDate}</p>
+                <div className='mt-4 space-y-2'>
+                    <span className="inline-block px-3 py-1 text-sm font-medium bg-green-100 text-green-700 rounded-full">
+                        🟢 {item.status}
+                    </span>
+                    <p className="text-sm text-slate-600">
+                        <span className="font-medium">Started:</span>{" "}
+                        {item.startDate.toDateString()}
+                    </p>
+                </div>
 
             </div>
-
         </div>
     )
 }

@@ -1,31 +1,35 @@
 import React from 'react'
-import sofa from "../images/sofa.jpg";
+import bed from "../images/bed.jpg";
 import fridge from "../images/fridge.jpg";
 import tv from "../images/tv.jpg";
 import washing from "../images/washing.jpg";
-const FeaturedProducts = () => {
+import { useNavigate } from 'react-router-dom';
+const FeaturedProducts = ({ cart, setCart, addCart }) => {
+    const navigate = useNavigate()
     const products = [
         {
-            name: "Comfort Sofa",
-            price: "₹499 / month",
-            image: sofa,
+            name: "Wooden Bed",
+            price: 499,
+            image: bed,
         },
         {
             name: "Modern Fridge",
-            price: "₹799 / month",
+            price: 799,
             image: fridge,
         },
         {
             name: "Smart TV",
-            price: "₹999 / month",
+            price: 999,
             image: tv,
         },
         {
             name: "Washing Machine",
-            price: "₹699 / month",
+            price: 699,
             image: washing,
         },
     ];
+
+
     return (
         <div>
             <section className='px-8 py-14 bg-white'>
@@ -36,8 +40,8 @@ const FeaturedProducts = () => {
                             <img src={item.image} alt={item.name} className='h-40 w-full object-cover' />
                             <div>
                                 <h3 className='px-2 font-semibold text-slate-900'>{item.name}</h3>
-                                <p className='px-2 text-purple-700 font-medium mt-2'>{item.price}</p>
-                                <button className='px-2 mt-4 w-full bg-purple-800 text-white py-2 rounded-md hover:bg-purple-900 cursor-pointer transition'>Rent Now</button>
+                                <p className='px-2 text-purple-700 font-medium mt-2'>₹{item.price} /month</p>
+                                <button onClick={() => (addCart(item))} className='px-2 mt-4 w-full bg-purple-800 text-white py-2 rounded-md hover:bg-purple-900 cursor-pointer transition'>Rent Now</button>
                             </div>
                         </div>
                     })}
