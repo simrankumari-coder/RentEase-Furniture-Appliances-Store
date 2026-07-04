@@ -8,7 +8,7 @@ const MyRentals = ({ rentals, setRentals, cart }) => {
             <div className='md:mt-0 mt-20 text-3xl sticky font-bold text-slate-900 mb-3'>
                 <h1 className='text-3xl font-bold text-slate-900'>Your Rentals</h1>
                 <div className='flex gap-5 flex-col mt-7'>
-                    {rentals.length === 0 ? <span className='text-sm font-light mt-0'>No Rentals Yet</span> :
+                    {rentals.length === 0 ? <span className='text-xl font-normal mt-1'>No Rentals Yet</span> :
                         rentals.map((item, index) => {
                             return <RentalItem item={item} key={index} />
                         })

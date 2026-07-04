@@ -12,6 +12,16 @@ import Login from './pages/Login.jsx'
 function App() {
   const navigate = useNavigate()
 
+  const [username, setUsername] = useState(() => {
+    let data = localStorage.getItem("username")
+    return data ? JSON.parse(data) : ""
+  })
+
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    let data = localStorage.getItem("loggedIn")
+    return data ? JSON.parse(data) : ""
+  })
+
   const [rentals, setRentals] = useState(() => {
 
     let data = localStorage.getItem("rentalItems")
@@ -24,17 +34,21 @@ function App() {
     })
       : []
   })
+
   const [cart, setCart] = useState(() => {
     let data = localStorage.getItem("cartItems")
     return data ? JSON.parse(data) : []
   })
 
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cart))
   }, [cart])
+
   useEffect(() => {
     localStorage.setItem("rentalItems", JSON.stringify(rentals))
   }, [rentals])
+
   console.log("rentals before:", rentals)
 
 
@@ -49,13 +63,23 @@ function App() {
     setRentals(prev => [...prev, ...newCart])
     setCart([])
   }
+
   const addCart = (product) => {
     setCart(prev => [...prev, product])
     navigate("/cart")
   }
+
+  const loggedOut = () => {
+    setIsLoggedIn(false)
+    setUsername("")
+    localStorage.removeItem("username")
+    localStorage.removeItem("password")
+    navigate("/")
+  }
+
   return (
     <>
-      <Navbar cart={cart} />
+      <Navbar loggedOut={loggedOut} cart={cart} isLoggedIn={isLoggedIn} username={username} />
       <ScrollToTop />
       <Routes>
         <Route
@@ -70,7 +94,7 @@ function App() {
         <Route
           path='/rentals' element={<MyRentals checkoutBtn={checkoutBtn} rentals={rentals} cart={cart} setRentals={setRentals} />}
         />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} setUsername={setUsername} />} />
 
       </Routes>
       <Footer />

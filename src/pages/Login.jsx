@@ -1,26 +1,64 @@
 import React from 'react'
-import { useState } from 'react'
-const Login = () => {
-    const [input, setInput] = useState("")
-    const [password, setPassword] = useState("")
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+const Login = ({ isLoggedIn, setIsLoggedIn, setUsername, username }) => {
+    const navigate = useNavigate()
+    const [usernameError, setUsernameError] = useState("")
+
+
+    const [input, setInput] = useState(() => {
+        let data = localStorage.getItem("username")
+        return data ? JSON.parse(data) : ""
+    })
+    const [password, setPassword] = useState(() => {
+        let data = localStorage.getItem("password")
+        return data ? JSON.parse(data) : ""
+    })
     const handleInput = (e) => {
-        e.target.value
+        setInput(e.target.value)
+        setUsernameError(input)
+
+
+
     }
     const handlePass = (e) => {
-        e.target.value
+        setPassword(e.target.value)
     }
+    const handleBtn = (e) => {
+        localStorage.setItem("username", JSON.stringify(input))
+        localStorage.setItem("password", JSON.stringify(password))
+        localStorage.setItem("loggedIn", JSON.stringify(true))
+        setIsLoggedIn(true)
+        setUsername(input)
+        setInput("")
+        setPassword("")
+        e.preventDefault()
+        navigate("/")
+    }
+
+
+
+
     return (
-        <div>
-            <form>
+        <div className='min-h-screen flex flex-col justify-center items-center bg-slate-100 px-4'>
 
-                <label>Username
-                    <input type="text" value={input} onChange={handleInput} /></label>
+            <form onSubmit={handleBtn} className='w-full max-w-md bg-white shadow-lg rounded-xl p-8 flex flex-col gap-5 font-semibold items-center justify-center md:mt-0 mt-48  h-auto '>
+                <div className="text-center">
+                    <h1 className="text-3xl font-bold text-purple-800">Login</h1>
+                    <p className="text-slate-500 mt-2">
+                        Welcome back to RentEase
+                    </p>
+                </div>
+                <label className='flex flex-col gap-2 font-medium text-slate-700'>Username:
+                    <input className='border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-purple-600' type="text" value={input} onChange={handleInput} placeholder='Enter your username' />
+                    {input.length < 2 && <span>username must have atleast 2 characters</span>}
+                </label>
 
-                <label>Password
-                    <input type='password' value={password} onChange={handlePass} /></label>
-                <button>Login</button>
+                <label className='flex flex-col gap-2 font-medium text-slate-700'>Password:
+                    <input className='border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-purple-600' placeholder='Enter your Password' type='password' value={password} onChange={handlePass} /></label>
+                <button className='mt-3 bg-purple-800 text-white px-4 py-2 rounded-md hover:bg-purple-900 transition'>Login</button>
             </form>
-        </div>
+        </div >
     )
 }
 
