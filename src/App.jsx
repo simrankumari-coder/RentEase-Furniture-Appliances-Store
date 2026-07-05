@@ -9,6 +9,8 @@ import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
 import Login from './pages/Login.jsx'
+import ProductCard from './components/ProductCard.jsx'
+import ProductDetails from './pages/ProductDetails.jsx'
 function App() {
   const navigate = useNavigate()
 
@@ -77,6 +79,15 @@ function App() {
     navigate("/")
   }
 
+  const addToCart = (product) => {
+    console.log("clicked", product)
+    const newProduct = {
+      cartId: Date.now(), ...product
+    }
+
+    setCart(prev => [...prev, newProduct])
+  }
+
   return (
     <>
       <Navbar loggedOut={loggedOut} cart={cart} isLoggedIn={isLoggedIn} username={username} />
@@ -86,7 +97,7 @@ function App() {
           path="/" element={<Home cart={cart} setCart={setCart} addCart={addCart} />}
         />
         <Route
-          path='/products' element={<Products cart={cart} setCart={setCart} addCart={addCart} />}
+          path='/products' element={<Products cart={cart} setCart={setCart} addCart={addCart} addToCart={addToCart} />}
         />
         <Route
           path='/cart' element={<Cart checkoutBtn={checkoutBtn} cart={cart} setCart={setCart} />}
@@ -95,7 +106,7 @@ function App() {
           path='/rentals' element={<MyRentals checkoutBtn={checkoutBtn} rentals={rentals} cart={cart} setRentals={setRentals} />}
         />
         <Route path='/login' element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} setUsername={setUsername} />} />
-
+        <Route path='/products/:id' element={<ProductDetails addCart={addCart} addToCart={addToCart} />} />
       </Routes>
       <Footer />
     </>

@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 const Login = ({ isLoggedIn, setIsLoggedIn, setUsername, username }) => {
     const navigate = useNavigate()
-    const [usernameError, setUsernameError] = useState("")
 
-
+    const [hasTypedUsername, setHasTypedUsername] = useState(false)
+    const [hasTypedPassword, setHasTypedPassword] = useState(false)
     const [input, setInput] = useState(() => {
         let data = localStorage.getItem("username")
         return data ? JSON.parse(data) : ""
@@ -16,15 +16,19 @@ const Login = ({ isLoggedIn, setIsLoggedIn, setUsername, username }) => {
     })
     const handleInput = (e) => {
         setInput(e.target.value)
-        setUsernameError(input)
-
+        setHasTypedUsername(true)
 
 
     }
     const handlePass = (e) => {
         setPassword(e.target.value)
+        setHasTypedPassword(true)
     }
     const handleBtn = (e) => {
+        e.preventDefault()
+        if (input.length < 2 || password.length > 6) {
+            return
+        }
         localStorage.setItem("username", JSON.stringify(input))
         localStorage.setItem("password", JSON.stringify(password))
         localStorage.setItem("loggedIn", JSON.stringify(true))
@@ -32,7 +36,6 @@ const Login = ({ isLoggedIn, setIsLoggedIn, setUsername, username }) => {
         setUsername(input)
         setInput("")
         setPassword("")
-        e.preventDefault()
         navigate("/")
     }
 
@@ -51,11 +54,19 @@ const Login = ({ isLoggedIn, setIsLoggedIn, setUsername, username }) => {
                 </div>
                 <label className='flex flex-col gap-2 font-medium text-slate-700'>Username:
                     <input className='border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-purple-600' type="text" value={input} onChange={handleInput} placeholder='Enter your username' />
-                    {input.length < 2 && <span>username must have atleast 2 characters</span>}
+
+                    {(hasTypedUsername === true && input.length < 2) &&
+                        <span className='text-red-600  text-sm '>Username must have atleast 2 characters</span>}
+
                 </label>
 
                 <label className='flex flex-col gap-2 font-medium text-slate-700'>Password:
-                    <input className='border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-purple-600' placeholder='Enter your Password' type='password' value={password} onChange={handlePass} /></label>
+                    <input className='border border-slate-300 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-purple-600' placeholder='Enter your Password' type='password' value={password} onChange={handlePass} />
+
+                    {(hasTypedPassword === true && password.length > 6) &&
+                        <span className='text-red-600 text-sm'>Password should be less than 6 characters</span>}
+
+                </label>
                 <button className='mt-3 bg-purple-800 text-white px-4 py-2 rounded-md hover:bg-purple-900 transition'>Login</button>
             </form>
         </div >
