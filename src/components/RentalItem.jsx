@@ -1,6 +1,7 @@
 import React from 'react'
 
-const RentalItem = ({ item }) => {
+const RentalItem = ({ item, returnRental, rental, setRental }) => {
+
     return (
         <div className='flex flex-col max-w-2xl sm:flex-row items-center gap-5 p-5 bg-white border rounded-xl shadow-sm hover:shadow-md transition'>
 
@@ -28,6 +29,9 @@ const RentalItem = ({ item }) => {
                         <span className="font-medium">Started:</span>{" "}
                         {item.startDate.toDateString()}
                     </p>
+                </div>
+                <div className='mt-4'>
+                    <button onClick={() => { returnRental(item.cartId) }} className='flex-1 border border-purple-800 text-purple-800 text-xl py-2 cursor-pointer rounded-md hover:bg-purple-50 px-2'>Rental return</button>
                 </div>
 
             </div>

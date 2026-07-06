@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import CartItem from '../components/CartItem'
 const Cart = ({ cart, setCart, checkoutBtn }) => {
     const totalRent = cart.reduce((total, item) => {
@@ -39,8 +40,10 @@ const Cart = ({ cart, setCart, checkoutBtn }) => {
                     <p className='flex justify-between text-slate-700'>Total Items: {cart.length}</p>
                     <p className='flex justify-between text-slate-700'>Total Rent: ₹        {Number(totalRent)} / month
                     </p>
-                    <button onClick={checkoutBtn} className='bg-purple-800 text-white w-full py-2 rounded-md hover:bg-purple-900'>Checkout
-                    </button>
+                    <Link to='/checkout'>
+                        <button className='bg-purple-800 text-white w-full py-2 rounded-md hover:bg-purple-900'>Checkout
+                        </button>
+                    </Link>
                 </div >
             </div>
         </div >

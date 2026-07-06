@@ -7,6 +7,8 @@ import Cart from "./pages/Cart.jsx"
 import MyRentals from './pages/MyRentals.jsx'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
+import Checkout from './pages/Checkout.jsx'
+import RentalHistory from './pages/RentalHistory.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
 import Login from './pages/Login.jsx'
 import ProductCard from './components/ProductCard.jsx'
@@ -64,6 +66,29 @@ function App() {
     })
     setRentals(prev => [...prev, ...newCart])
     setCart([])
+    navigate("/rentals")
+  }
+
+  const returnRental = (cartId) => {
+
+    setRentals(
+      rentals.map(item => {
+        if (item.cartId === cartId) {
+          return {
+            ...item,
+            status: "completed",
+            returnDate: new Date()
+          }
+        }
+        return item
+      })
+
+    )
+    console.log("Returning:", cartId);
+    console.log("rentalkgndf,mlg;jilKL:K[iPHKbjlo;", rentals);
+    navigate("/rentalHistory")
+
+
   }
 
   const addCart = (product) => {
@@ -103,10 +128,12 @@ function App() {
           path='/cart' element={<Cart checkoutBtn={checkoutBtn} cart={cart} setCart={setCart} />}
         />
         <Route
-          path='/rentals' element={<MyRentals checkoutBtn={checkoutBtn} rentals={rentals} cart={cart} setRentals={setRentals} />}
+          path='/rentals' element={<MyRentals returnRental={returnRental} checkoutBtn={checkoutBtn} rentals={rentals} cart={cart} setRentals={setRentals} />}
         />
         <Route path='/login' element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} setUsername={setUsername} />} />
         <Route path='/products/:id' element={<ProductDetails addCart={addCart} addToCart={addToCart} />} />
+        <Route path='/checkout' element={<Checkout cart={cart} checkoutBtn={checkoutBtn} />} />
+        <Route path='/rentalHistory' element={<RentalHistory rentals={rentals} setRentals={setRentals} />} />
       </Routes>
       <Footer />
     </>

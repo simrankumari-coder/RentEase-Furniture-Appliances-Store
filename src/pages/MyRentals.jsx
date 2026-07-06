@@ -1,6 +1,6 @@
 import React from 'react'
 import RentalItem from '../components/RentalItem'
-const MyRentals = ({ rentals, setRentals, cart }) => {
+const MyRentals = ({ rentals, setRentals, returnRental, cart }) => {
     console.log(rentals)
     return (
         <div className='px-6 md:px-10 py-8 bg-slate-50 pt-24'>
@@ -10,7 +10,7 @@ const MyRentals = ({ rentals, setRentals, cart }) => {
                 <div className='flex gap-5 flex-col mt-7'>
                     {rentals.length === 0 ? <span className='text-xl font-normal mt-1'>No Rentals Yet</span> :
                         rentals.map((item, index) => {
-                            return <RentalItem item={item} key={index} />
+                            return <RentalItem item={item} returnRental={returnRental} key={index} />
                         })
 
                     }
