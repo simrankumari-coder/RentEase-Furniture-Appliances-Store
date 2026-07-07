@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import CartItem from '../components/CartItem'
-const Cart = ({ cart, setCart, checkoutBtn }) => {
+const Cart = ({ cart, setCart, checkoutBtn, tenure, setTenure }) => {
     const totalRent = cart.reduce((total, item) => {
         return total + Number(item.price)
     }, 0)
@@ -11,7 +11,6 @@ const Cart = ({ cart, setCart, checkoutBtn }) => {
             prev.filter(item => item.cartId !== cartId))
     }
     console.log("cart in checkout:", cart)
-
 
 
     console.log(cart)

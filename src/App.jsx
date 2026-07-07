@@ -15,7 +15,7 @@ import ProductCard from './components/ProductCard.jsx'
 import ProductDetails from './pages/ProductDetails.jsx'
 function App() {
   const navigate = useNavigate()
-
+  const [tenure, setTenure] = useState("")
   const [username, setUsername] = useState(() => {
     let data = localStorage.getItem("username")
     return data ? JSON.parse(data) : ""
@@ -57,11 +57,13 @@ function App() {
 
 
   const checkoutBtn = () => {
+    console.log("enure in app", tenure)
     const newCart = cart.map(item => {
       return {
         ...item,
         status: "Active",
-        startDate: new Date()
+        startDate: new Date(),
+        selectedTenure: tenure
       }
     })
     setRentals(prev => [...prev, ...newCart])
@@ -82,13 +84,8 @@ function App() {
         }
         return item
       })
-
     )
-    console.log("Returning:", cartId);
-    console.log("rentalkgndf,mlg;jilKL:K[iPHKbjlo;", rentals);
-    navigate("/rentalHistory")
-
-
+    // navigate("/rentalHistory")
   }
 
   const addCart = (product) => {
@@ -125,14 +122,14 @@ function App() {
           path='/products' element={<Products cart={cart} setCart={setCart} addCart={addCart} addToCart={addToCart} />}
         />
         <Route
-          path='/cart' element={<Cart checkoutBtn={checkoutBtn} cart={cart} setCart={setCart} />}
+          path='/cart' element={<Cart tenure={tenure} setTenure={setTenure} checkoutBtn={checkoutBtn} cart={cart} setCart={setCart} />}
         />
         <Route
           path='/rentals' element={<MyRentals returnRental={returnRental} checkoutBtn={checkoutBtn} rentals={rentals} cart={cart} setRentals={setRentals} />}
         />
         <Route path='/login' element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} setUsername={setUsername} />} />
         <Route path='/products/:id' element={<ProductDetails addCart={addCart} addToCart={addToCart} />} />
-        <Route path='/checkout' element={<Checkout cart={cart} checkoutBtn={checkoutBtn} />} />
+        <Route path='/checkout' element={<Checkout tenure={tenure} setTenure={setTenure} cart={cart} checkoutBtn={checkoutBtn} />} />
         <Route path='/rentalHistory' element={<RentalHistory rentals={rentals} setRentals={setRentals} />} />
       </Routes>
       <Footer />
