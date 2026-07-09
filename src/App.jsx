@@ -13,6 +13,7 @@ import ScrollToTop from './components/ScrollToTop.jsx'
 import Login from './pages/Login.jsx'
 import ProductCard from './components/ProductCard.jsx'
 import ProductDetails from './pages/ProductDetails.jsx'
+import Maintainence from './pages/Maintainence.jsx'
 function App() {
   const navigate = useNavigate()
   const [tenure, setTenure] = useState("")
@@ -32,7 +33,8 @@ function App() {
     return data ? JSON.parse(data).map(item => {
       return {
         ...item,
-        startDate: new Date(item.startDate)
+        startDate: new Date(item.startDate),
+
       }
 
     })
@@ -128,6 +130,7 @@ function App() {
           path='/rentals' element={<MyRentals returnRental={returnRental} checkoutBtn={checkoutBtn} rentals={rentals} cart={cart} setRentals={setRentals} />}
         />
         <Route path='/login' element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} setUsername={setUsername} />} />
+        <Route path="/maintainence/:id" element={<Maintainence rentals={rentals} setRentals={setRentals} />} />
         <Route path='/products/:id' element={<ProductDetails addCart={addCart} addToCart={addToCart} />} />
         <Route path='/checkout' element={<Checkout tenure={tenure} setTenure={setTenure} cart={cart} checkoutBtn={checkoutBtn} />} />
         <Route path='/rentalHistory' element={<RentalHistory rentals={rentals} setRentals={setRentals} />} />

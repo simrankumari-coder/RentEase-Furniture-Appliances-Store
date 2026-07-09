@@ -27,20 +27,20 @@ const RentalHistory = ({ rentals, tenure, setTenure }) => {
 
                                 <div className=' p-6 flex flex-col gap-2 '>
                                     <h3 className='text-2xl font-semibold text-slate-700 flex gap-x-0.5
-                                    '> <AiOutlineCheck className='font-extrabold text-2xl' />  Returned Successfully</h3>
-                                    <hr className='bg-gray-200 w-1/2 h-1 mt-2 mb-4' />
+                                    '> Returned Successfully</h3>
+                                    <hr className='bg-gray-200 w-1/2 h-1 mt-0 mb-4' />
                                     <div className=''>
-                                        <p className='text-xl  text-slate-700 '>Selected Tenure: {item.selectedTenure}</p>
-                                        <p className='text-xl  text-slate-700 '>Actual Duration: {duration} {" "}{duration === 1 ? "day" : "days"}</p></div>
+                                        <p className='text-sm  text-slate-700 '>Selected Tenure: {item.selectedTenure}</p>
+                                        <p className='text-sm  text-slate-700 '>Actual Duration: {duration} {" "}{duration === 1 ? "day" : "days"}</p></div>
                                     {console.log("the tenure is", item.selectedTenure)}
                                     <div >
-                                        <p className='text-sm  text-slate-600 '>Started Date:{" "}{item.startDate.toLocaleDateString("default", {
+                                        <p className='text-xs text-slate-600 '>Started Date:{" "}{item.startDate.toLocaleDateString("default", {
                                             day: "numeric",
                                             month: "long",
                                             year: "numeric",
                                         })}</p>
 
-                                        <p className='text-sm  text-slate-600'>Returned Date:{" "}{new Date(item.returnDate).toLocaleDateString("default", {
+                                        <p className='text-xs  text-slate-600'>Returned Date:{" "}{new Date(item.returnDate).toLocaleDateString("default", {
                                             day: "numeric",
                                             month: "long",
                                             year: "numeric",
