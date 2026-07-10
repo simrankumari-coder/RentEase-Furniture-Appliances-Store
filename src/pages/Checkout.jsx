@@ -32,8 +32,8 @@ const Checkout = ({ cart, checkoutBtn, setTenure, tenure }) => {
         checkoutBtn();
     }
     return (
-        <div className='min-h-screen flex flex-col justify-center items-center bg-slate-100 px-4'>
-            <form onSubmit={handleBtn} id='checkout' className='w-full mt-3 max-w-md bg-white shadow-lg rounded-xl p-8 flex flex-col gap-5 font-semibold  h-auto'>
+        <div className='w-full flex flex-col items-center bg-slate-50 py-10 px-4'>
+            <form onSubmit={handleBtn} id='checkout' className='w-full mt-3 max-w-md bg-white shadow-lg rounded-xl p-8 flex flex-col gap-5 font-semibold'>
                 <div className="text-center">
                     <h1 className="text-3xl font-bold text-purple-800">Checkout</h1>
                     <p className="text-slate-500 mt-2">

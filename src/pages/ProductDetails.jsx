@@ -27,7 +27,7 @@ const ProductDetails = ({ addCart, addToCart }) => {
 
 
     return (
-        <div className='bg-slate-100 min-h-screen '>
+        <div className='bg-red-400 min-h-screen '>
             <div className='flex flex-col gap-6  max-w-6xl mx-auto px-6 py-10'>
                 <div><button className='cursor-pointer text-center flex gap-2 text-purple-900 rounded-md p-3 border-purple-900 border ml-3  font-bold' onClick={handleBtn}>
                     <IoArrowBackCircleOutline className='text-2xl' /> Back To products</button></div>

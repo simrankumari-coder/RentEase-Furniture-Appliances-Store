@@ -114,28 +114,31 @@ function App() {
 
   return (
     <>
-      <Navbar loggedOut={loggedOut} cart={cart} isLoggedIn={isLoggedIn} username={username} />
-      <ScrollToTop />
-      <Routes>
-        <Route
-          path="/" element={<Home cart={cart} setCart={setCart} addCart={addCart} />}
-        />
-        <Route
-          path='/products' element={<Products cart={cart} setCart={setCart} addCart={addCart} addToCart={addToCart} />}
-        />
-        <Route
-          path='/cart' element={<Cart tenure={tenure} setTenure={setTenure} checkoutBtn={checkoutBtn} cart={cart} setCart={setCart} />}
-        />
-        <Route
-          path='/rentals' element={<MyRentals returnRental={returnRental} checkoutBtn={checkoutBtn} rentals={rentals} cart={cart} setRentals={setRentals} />}
-        />
-        <Route path='/login' element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} setUsername={setUsername} />} />
-        <Route path="/maintainence/:id" element={<Maintainence rentals={rentals} setRentals={setRentals} />} />
-        <Route path='/products/:id' element={<ProductDetails addCart={addCart} addToCart={addToCart} />} />
-        <Route path='/checkout' element={<Checkout tenure={tenure} setTenure={setTenure} cart={cart} checkoutBtn={checkoutBtn} />} />
-        <Route path='/rentalHistory' element={<RentalHistory rentals={rentals} setRentals={setRentals} />} />
-      </Routes>
-      <Footer />
+      <div className="min-h-screen flex flex-col">
+        <Navbar loggedOut={loggedOut} cart={cart} isLoggedIn={isLoggedIn} username={username} />
+        <ScrollToTop />
+        <main className="min-h-screen flex flex-col flex-1">
+          <Routes>
+            <Route
+              path="/" element={<Home cart={cart} setCart={setCart} addCart={addCart} />}
+            />
+            <Route
+              path='/products' element={<Products cart={cart} setCart={setCart} addCart={addCart} addToCart={addToCart} />}
+            />
+            <Route
+              path='/cart' element={<Cart tenure={tenure} setTenure={setTenure} checkoutBtn={checkoutBtn} cart={cart} setCart={setCart} />}
+            />
+            <Route
+              path='/rentals' element={<MyRentals returnRental={returnRental} checkoutBtn={checkoutBtn} rentals={rentals} cart={cart} setRentals={setRentals} />}
+            />
+            <Route path='/login' element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} setUsername={setUsername} />} />
+            <Route path="/maintainence/:id" element={<Maintainence rentals={rentals} setRentals={setRentals} />} />
+            <Route path='/products/:id' element={<ProductDetails addCart={addCart} addToCart={addToCart} />} />
+            <Route path='/checkout' element={<Checkout tenure={tenure} setTenure={setTenure} cart={cart} checkoutBtn={checkoutBtn} />} />
+            <Route path='/rentalHistory' element={<RentalHistory rentals={rentals} setRentals={setRentals} />} />
+          </Routes>
+        </main>
+        <Footer /></div>
     </>
   )
 }
