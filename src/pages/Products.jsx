@@ -52,6 +52,7 @@ const Products = ({ cart, setCart, addCart, addToCart }) => {
                     <ProductCard key={product.id} product={product} addCart={addCart} addToCart={addToCart} />
                 ))}
             </div>
+
         </div>
     )
 }

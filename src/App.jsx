@@ -14,6 +14,7 @@ import Login from './pages/Login.jsx'
 import ProductCard from './components/ProductCard.jsx'
 import ProductDetails from './pages/ProductDetails.jsx'
 import Maintainence from './pages/Maintainence.jsx'
+import toast from 'react-hot-toast'
 function App() {
   const navigate = useNavigate()
   const [tenure, setTenure] = useState("")
@@ -108,6 +109,7 @@ function App() {
     }
 
     setCart(prev => [...prev, newProduct])
+    toast.success("Item added to the cart")
   }
 
   return (

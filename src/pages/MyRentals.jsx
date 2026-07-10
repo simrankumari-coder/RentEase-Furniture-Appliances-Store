@@ -1,4 +1,5 @@
 import React from 'react'
+
 import RentalItem from '../components/RentalItem'
 const MyRentals = ({ rentals, setRentals, returnRental, cart }) => {
 
