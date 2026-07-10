@@ -6,7 +6,7 @@ import FeaturedProducts from '../components/FeaturedProducts'
 import Footer from '../components/Footer'
 const Home = ({ cart, setCart, addCart }) => {
     return (
-        <div className='pt-16'>
+        <div className=''>
 
             <Hero />
             <Category />

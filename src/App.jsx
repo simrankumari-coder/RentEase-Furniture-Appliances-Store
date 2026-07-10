@@ -26,7 +26,6 @@ function App() {
     let data = localStorage.getItem("loggedIn")
     return data ? JSON.parse(data) : ""
   })
-
   const [rentals, setRentals] = useState(() => {
 
     let data = localStorage.getItem("rentalItems")
@@ -55,11 +54,10 @@ function App() {
     localStorage.setItem("rentalItems", JSON.stringify(rentals))
   }, [rentals])
 
-  console.log("rentals before:", rentals)
 
 
   const checkoutBtn = () => {
-    console.log("enure in app", tenure)
+
     const newCart = cart.map(item => {
       return {
         ...item,
@@ -87,7 +85,7 @@ function App() {
         return item
       })
     )
-    // navigate("/rentalHistory")
+
   }
 
   const addCart = (product) => {
@@ -104,7 +102,7 @@ function App() {
   }
 
   const addToCart = (product) => {
-    console.log("clicked", product)
+
     const newProduct = {
       cartId: Date.now(), ...product
     }

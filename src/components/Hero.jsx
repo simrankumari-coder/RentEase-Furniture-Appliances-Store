@@ -7,7 +7,7 @@ const Hero = () => {
 
             <main className="flex flex-col md:flex-row items-center justify-between px-6  py-10 md:px-8 md:py-16 bg-slate-50 gap-10">
                 <div className='max-w-xl'>
-                    <h1 className='md:mt-0 mt-20 text-5xl font-bold leading-tight'>Rent Furniture & Appliances Easily</h1>
+                    <h1 className=' text-5xl font-bold leading-tight'>Rent Furniture & Appliances Easily</h1>
                     <p className='mt-4 text-slate-600 text-lg'> Affordable monthly rental plans for modern living. No heavy buying cost, just rent and relax.</p>
 
                     <Link to="/products">

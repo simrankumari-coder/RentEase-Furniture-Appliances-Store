@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const ProductCard = ({ product, addToCart, addCart }) => {
-    console.log(product);
-    console.log(product?.image);
+   
     return (
         <div>
 
@@ -14,8 +13,8 @@ const ProductCard = ({ product, addToCart, addCart }) => {
 
                     <Link to={`/products/${product.id}`} className='text-slate-900 underline ' > View Details</Link>
                     <div className='flex mt-4 gap-3'>
-                        <button onClick={() => (addCart(product))} className='flex-1 border border-purple-800 text-purple-800 py-2 rounded-md hover:bg-purple-50'>Rent Now</button>
-                        <button onClick={() => addToCart(product)} className='flex-1 bg-purple-800 text-white py-2 rounded-md hover:bg-purple-900'>Add To Cart</button>
+                        <button onClick={() => (addCart(product))} className='flex-1  border border-purple-800 text-purple-800 py-2 rounded-md hover:bg-purple-50'>Rent Now</button>
+                        <button onClick={() => addToCart(product)} className='flex-1 text-sm bg-purple-800 text-white py-2 rounded-md hover:bg-purple-900'>Add To Cart</button>
                     </div>
                 </div>
 

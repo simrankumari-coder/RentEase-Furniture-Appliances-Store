@@ -6,18 +6,15 @@ const Cart = ({ cart, setCart, checkoutBtn, tenure, setTenure }) => {
         return total + Number(item.price)
     }, 0)
     const removeItem = (cartId) => {
-        console.log("clicked remove:", cartId)
+
         setCart(prev =>
             prev.filter(item => item.cartId !== cartId))
     }
-    console.log("cart in checkout:", cart)
 
-
-    console.log(cart)
     return (
-        <div className='px-6 md:px-10 py-8 bg-slate-50 pt-24 '>
+        <div className='px-6 md:px-10 py-8 bg-slate-50'>
 
-            < h1 className='md:mt-0 mt-20 text-3xl sticky font-bold text-slate-900 mb-3' > My Cart</h1 >
+            < h1 className='text-3xl sticky font-bold text-slate-900 mb-3' > My Cart</h1 >
 
             <div className='flex md:gap-6 flex-col md:flex-row gap-11 '>
                 <div className='flex-1 order-2 md:order-1'>

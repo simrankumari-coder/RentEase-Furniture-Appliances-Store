@@ -1,7 +1,7 @@
 import React from 'react'
 
 const CartItem = ({ item, removeItem }) => {
-    console.log(item.cartId)
+
 
     return (
         <div className='flex  items-center gap-4 p-4 border rounded-lg bg-white shadow-sm w-full'>
@@ -12,7 +12,7 @@ const CartItem = ({ item, removeItem }) => {
                 className='w-24 h-24 object-cover rounded-md'
             />
 
-            {/* RIGHT: TEXT + BUTTON */}
+
             <div className='flex flex-col flex-1'>
 
                 <h3 className='font-semibold text-slate-900'>

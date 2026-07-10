@@ -22,15 +22,15 @@ const Products = ({ cart, setCart, addCart, addToCart }) => {
         }
     }, [category]);
 
-    console.log(category)
+
 
 
     return (
 
-        <div className='px-6 md:px-10 py-8 bg-slate-50 pt-24'>
+        <div className='px-6 md:px-10 py-8 bg-slate-50 '>
 
             <div className='mb-8'>
-                <h1 className='md:mt-0 mt-20 text-3xl font-bold text-slate-900'>All Products</h1>
+                <h1 className=' text-3xl font-bold text-slate-900'>All Products</h1>
                 <p className='text-slate-600 mt-2'>Browse furniture and appliances avilable for rent</p>
             </div>
             <h1 id='furniture' className='scroll-mt-24 text-2xl font-bold text-slate-800 '>Furniture</h1>
